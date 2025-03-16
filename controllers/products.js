@@ -1,5 +1,3 @@
 exports.getAll = (req, res) => {
-    res.json({
-        message:'Success'
-    })
+    res.json()
 }
