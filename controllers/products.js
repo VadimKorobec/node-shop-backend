@@ -1,3 +1,3 @@
 exports.getAll = (req, res) => {
-    res.json()
+    res.json({message:'Hello'})
 }
