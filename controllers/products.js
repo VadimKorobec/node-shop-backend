@@ -9,6 +9,14 @@ exports.getAll = async (req, res, next) => {
   }
 };
 
+exports.getByBrand = async (req, res, next) => {
+  console.log(req.params)
+  try {
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.addProduct = async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
