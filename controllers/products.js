@@ -10,8 +10,10 @@ exports.getAll = async (req, res, next) => {
 };
 
 exports.getByBrand = async (req, res, next) => {
-  console.log(req.params)
   try {
+    const { brand } = req.params;
+    const productsByBrand = await Product.find({ brand });
+    res.status(200).json(productsByBrand);
   } catch (error) {
     next(error);
   }
