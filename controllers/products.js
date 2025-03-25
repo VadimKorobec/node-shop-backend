@@ -1,5 +1,5 @@
 const HttpError = require("../helpers/HttpError");
-const Product = require("../models/product");
+const { Product } = require("../models/product");
 
 exports.getAll = async (req, res, next) => {
   try {
@@ -14,7 +14,7 @@ exports.getByBrand = async (req, res, next) => {
   try {
     const { brand } = req.params;
     const result = await Product.find({ brand });
-    if (!result) {
+    if (result.length === 0) {
       throw HttpError(404, "Not found");
     }
     res.status(200).json(result);

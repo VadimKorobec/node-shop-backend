@@ -24,7 +24,7 @@ productSchema.post("save", (error, data, next) => {
 
 const addSchema = Joi.object({
   title: Joi.string().required(),
-  price: Joi.string().required(),
+  price: Joi.number().required(),
   sizes: Joi.array().items(Joi.string().required()),
   description: Joi.string().required(),
   brand: Joi.string().required(),
