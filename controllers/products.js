@@ -1,3 +1,4 @@
+const HttpError = require("../helpers/HttpError");
 const Product = require("../models/product");
 
 exports.getAll = async (req, res, next) => {
@@ -12,8 +13,11 @@ exports.getAll = async (req, res, next) => {
 exports.getByBrand = async (req, res, next) => {
   try {
     const { brand } = req.params;
-    const productsByBrand = await Product.find({ brand });
-    res.status(200).json(productsByBrand);
+    const result = await Product.find({ brand });
+    if (!result) {
+      throw HttpError(404, "Not found");
+    }
+    res.status(200).json(result);
   } catch (error) {
     next(error);
   }
@@ -27,3 +31,10 @@ exports.addProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+// if (!result) {
+//   const error = new Error('Not found');
+// error.status = 404;
+// throw error
+//   })
+// }
