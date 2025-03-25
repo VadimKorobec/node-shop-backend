@@ -13,7 +13,7 @@ exports.getAll = async (req, res, next) => {
 exports.getByBrand = async (req, res, next) => {
   try {
     const { brand } = req.params;
-    const result = await Product.find({ brand });
+    const result = await Product.find({ brand: new RegExp(`^${brand}$`, "i") });
     if (result.length === 0) {
       throw HttpError(404, "Not found");
     }
