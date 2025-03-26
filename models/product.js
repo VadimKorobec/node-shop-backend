@@ -18,7 +18,7 @@ const productSchema = new Schema(
 );
 
 productSchema.post("save", (error, data, next) => {
-  error.status(400);
+  error.status = 400;
   next();
 });
 
