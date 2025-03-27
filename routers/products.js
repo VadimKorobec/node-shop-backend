@@ -24,6 +24,6 @@ router.put(
   productsCtrl.updateById
 );
 
-
+router.delete("/:id", isValidId, productsCtrl.deleteById);
 
 module.exports = router;

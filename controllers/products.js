@@ -58,6 +58,21 @@ exports.updateById = async (req, res, next) => {
   }
 };
 
+exports.deleteById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Product.findByIdAndDelete(id);
+    if (!result) {
+      throw HttpError(404, "Not found");
+    }
+    res.json({
+      message: "Delete success",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // if (!result) {
 //   const error = new Error('Not found');
 // error.status = 404;
